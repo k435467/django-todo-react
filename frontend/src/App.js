@@ -1,5 +1,3 @@
-// frontend/src/App.js
-
 import React, { Component } from "react";
 import Modal from "./components/Modal";
 import axios from "axios";
@@ -12,9 +10,9 @@ class App extends Component {
       activeItem: {
         title: "",
         description: "",
-        completed: false
+        completed: false,
       },
-      todoList: []
+      todoList: [],
     };
   }
   componentDidMount() {
@@ -23,10 +21,10 @@ class App extends Component {
   refreshList = () => {
     axios
       .get("http://localhost:8000/api/todos/")
-      .then(res => this.setState({ todoList: res.data }))
-      .catch(err => console.log(err));
+      .then((res) => this.setState({ todoList: res.data }))
+      .catch((err) => console.log(err));
   };
-  displayCompleted = status => {
+  displayCompleted = (status) => {
     if (status) {
       return this.setState({ viewCompleted: true });
     }
@@ -53,9 +51,9 @@ class App extends Component {
   renderItems = () => {
     const { viewCompleted } = this.state;
     const newItems = this.state.todoList.filter(
-      item => item.completed === viewCompleted
+      (item) => item.completed === viewCompleted
     );
-    return newItems.map(item => (
+    return newItems.map((item) => (
       <li
         key={item.id}
         className="list-group-item d-flex justify-content-between align-items-center"
@@ -69,17 +67,11 @@ class App extends Component {
           {item.title}
         </span>
         <span>
-          <button
-            onClick={() => this.editItem(item)}
-            className="btn btn-secondary mr-2"
-          >
+          <button onClick={() => this.editItem(item)} className="btn btn-secondary mr-2">
             {" "}
             Edit{" "}
           </button>
-          <button
-            onClick={() => this.handleDelete(item)}
-            className="btn btn-danger"
-          >
+          <button onClick={() => this.handleDelete(item)} className="btn btn-danger">
             Delete{" "}
           </button>
         </span>
@@ -89,28 +81,28 @@ class App extends Component {
   toggle = () => {
     this.setState({ modal: !this.state.modal });
   };
-  handleSubmit = item => {
+  handleSubmit = (item) => {
     this.toggle();
     if (item.id) {
       axios
         .put(`http://localhost:8000/api/todos/${item.id}/`, item)
-        .then(res => this.refreshList());
+        .then((res) => this.refreshList());
       return;
     }
     axios
       .post("http://localhost:8000/api/todos/", item)
-      .then(res => this.refreshList());
+      .then((res) => this.refreshList());
   };
-  handleDelete = item => {
+  handleDelete = (item) => {
     axios
       .delete(`http://localhost:8000/api/todos/${item.id}`)
-      .then(res => this.refreshList());
+      .then((res) => this.refreshList());
   };
   createItem = () => {
     const item = { title: "", description: "", completed: false };
     this.setState({ activeItem: item, modal: !this.state.modal });
   };
-  editItem = item => {
+  editItem = (item) => {
     this.setState({ activeItem: item, modal: !this.state.modal });
   };
   render() {
@@ -126,9 +118,7 @@ class App extends Component {
                 </button>
               </div>
               {this.renderTabList()}
-              <ul className="list-group list-group-flush">
-                {this.renderItems()}
-              </ul>
+              <ul className="list-group list-group-flush">{this.renderItems()}</ul>
             </div>
           </div>
         </div>
