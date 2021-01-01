@@ -1,6 +1,6 @@
 # Introduction
 
-Follow [the tutorail](https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react) to build a to-do application using Django and React.
+Follow [the tutorail](https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react) to build a to-do application using Django and React. And rewrite components by using Hooks.
 
 ## Use
 
