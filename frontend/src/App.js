@@ -14,7 +14,7 @@ export default function App() {
 
   function refreshList() {
     axios
-      .get("http://localhost:8000/api/todos/")
+      .get("/api/todos/")
       .then((res) => setTodoList(res.data))
       .catch((err) => console.log(err));
   }
@@ -44,15 +44,13 @@ export default function App() {
   function handleSubmit(item) {
     setModal(!modal);
     if (item.id) {
-      axios
-        .put(`http://localhost:8000/api/todos/${item.id}/`, item)
-        .then(() => refreshList());
+      axios.put(`/api/todos/${item.id}/`, item).then(() => refreshList());
       return;
     }
-    axios.post("http://localhost:8000/api/todos/", item).then(() => refreshList());
+    axios.post("/api/todos/", item).then(() => refreshList());
   }
   function handleDelete(item) {
-    axios.delete(`http://localhost:8000/api/todos/${item.id}`).then(() => refreshList());
+    axios.delete(`/api/todos/${item.id}`).then(() => refreshList());
   }
   function createItem() {
     const item = { title: "", description: "", completed: false };
