@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  django:
+    build: ./backend
+    volumes:
+      - ./backend:/code/backend
+  django_migrate:
+    extends:
+      service: django
+    command: ["python", "manage.py", "migrate"]
+  django_run:
+    extends:
+      service: django
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    ports:
+      - "8000:8000"
+  frontend:
+    build: ./frontend
+    command: ["npm", "start"]
+    volumes:
+      - ./frontend:/code/frontend
+      - node-modules:/code/frontend/node_modules
+    ports:
+      - "3000:3000"
+
+volumes:
+  node-modules:
