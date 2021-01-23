@@ -1,15 +1,21 @@
 # Introduction
 
-Follow [the tutorail](https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react) to build a to-do application using Django and React. And rewrite components by using Hooks.
+Follow [the tutorail](https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react) to build a to-do application using Django and React. And rewrite components by using Hooks. Furthermore, docker-composify them by following [the tutorial](https://www.craigfranklin.dev/python/docker/javascript/2019/05/16/docker-compose-django-cra/) and do some tweaks.
 
 ## Use
 
-```shell
-# backend/
-py manage.py runserver
+RUN
 
-# frontend/
-npm start
+```shell
+cd django-todo-react/
+docker-compose up --build
+```
+
+STOP
+
+```shell
+cd django-todo-react/
+docker-compose down
 ```
 
 ## My notes
