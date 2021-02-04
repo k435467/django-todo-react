@@ -5,4 +5,4 @@ WORKDIR /app/frontend/
 COPY ./frontend/package.json /app/frontend/
 RUN npm i
 
-COPY . /app/frontend/
+COPY ./frontend /app/frontend/
