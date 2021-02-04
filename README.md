@@ -6,20 +6,29 @@ Follow [the tutorail](https://www.digitalocean.com/community/tutorials/build-a-t
   <img src="demo/django-todo-react-demo.gif" width="300">
 </p>
 
+Ubuntu 20.04
+
 ## Usage
 
-RUN
+Run
 
 ```shell
 cd django-todo-react/
 docker-compose up --build
 ```
 
-STOP
+Stop
 
 ```shell
 cd django-todo-react/
 docker-compose down
+```
+
+Stop and remove all images used by services
+
+```shell
+cd django-todo-react/
+docker-compose down --rmi all
 ```
 
 ## My notes
